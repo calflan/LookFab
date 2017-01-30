@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Simple Payment Form use Bootstrap</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="sass/styles.css">
+
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="twelve columns">
+
+          <h4>Select Payment Method</h4>
+
+          <button class="paymentOption" id="paypalButton">PayPal</button>
+          <button class="paymentOption" id="cardButton">Credit/Debit Card</button>
+
+          <div id="paypal">
+            test
+          </div>
+          
+          <div id="cardForm">
+            <!-- CREDIT CARD FORM STARTS HERE --> 
+            
+            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+            <form role="form">
+
+              <label>CARD NUMBER</label>
+              <input type="tel" class="cardNumber" name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required autofocus />
+              <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+
+              <label for="nameOnCard">NAME ON CARD</label>
+              <input type="text" class="nameOnCard" name="nameOnCard" placeholder="Please enter the name as it appears on the card" />
+          
+              <label for="cardExpiry">EXPIRATION DATE</label>
+              <input type="tel" class="cardExpiry" name="cardExpiry" placeholder="MM" autocomplete="cc-exp" required />
+              <input type="tel" class="cardExpiry" name="cardExpiry" placeholder="YY" autocomplete="cc-exp" required />
+            
+              <label for="cardCVC">CV2 CODE</label>
+              <input type="tel" class="cardCVC" name="cardCVC" placeholder="CVC" autocomplete="cc-csc" required />
+         
+              <button class="submitButton" type="submit">Submit My Order</button>
+
+              <p class="payment-errors"></p>
+            </form>
+            <!-- CREDIT CARD FORM ENDS HERE -->
+          </div><!-- #cardForm -->
+        </div> 
+      </div>
+    </div>
+
+  	<!-- If you're using Stripe for payments -->
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js'></script>
+    <script src="js/index.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+
+      document.getElementById('cardForm').style.display='none';
+
+      document.getElementById('cardButton').onclick=function(){
+        document.getElementById('cardForm').style.display='';
+        document.getElementById('paypal').style.display='none';
+      };
+
+      document.getElementById('paypal').style.display='none';
+
+      document.getElementById('paypalButton').onclick=function(){
+        document.getElementById('paypal').style.display='';
+        document.getElementById('cardForm').style.display='none';
+      };
+
+    </script>
+
+  </body>
+</html>
