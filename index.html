@@ -3,56 +3,256 @@
   <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Simple Payment Form use Bootstrap</title>
 
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="sass/styles.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
   </head>
 
   <body>
+
+    <header>
+      LookFabulous
+    </header>
+
+    <div class="row stages">
+      <div class="four columns stage">
+        Delivery Address
+      </div>
+
+      <div class="four columns stage">
+        Delivery Option
+      </div>
+
+      <div class="four columns stage">
+        <div class="current-stage">
+          Payment
+        </div>
+      </div>
+    </div>
+
     <div class="container">
+
+      <h5>Select Payment Method</h5>
+
+      <button class="paymentOption" id="cardButton">Card</button>
+      <button class="paymentOption" id="paypalButton">PayPal</button>
+      <button class="paymentOption" id="alipayButton">AliPay</button>
+
+      
       <div class="row">
-        <div class="twelve columns">
-
-          <h4>Select Payment Method</h4>
-
-          <button class="paymentOption" id="paypalButton">PayPal</button>
-          <button class="paymentOption" id="cardButton">Credit/Debit Card</button>
-
+        <div class="twelve columns main" id="main">
           <div id="paypal">
-            test
+            <p>Okay, <strong>PayPal</strong> it is!</p>
+            <p class="attention">Attention! Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken away from this site</p>
           </div>
           
           <div id="cardForm">
-            <!-- CREDIT CARD FORM STARTS HERE --> 
+            <!-- CREDIT CARD FORM STARTS HERE -->
+
+            <p>Okay, please enter your card details below:</p>
             
-            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+            <img class="cardImg" src="img/creditCards.png">
             <form role="form">
+              <div class="row">
+                <label>CARD NUMBER</label>
+              </div>
+              <div class="row">
+                <input type="tel" class="cardNumber" name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required autofocus />
+              </div>
+              <div class="row">
+                <label for="nameOnCard">NAME ON CARD</label>
+              </div>
+              <div class="row">
+                <input type="text" class="nameOnCard" name="nameOnCard" placeholder="Please enter the name as it appears on the card" />
+              </div>
+              
+              <div class="row">
+                <label for="cardExpiry">EXPIRATION DATE</label>
+              </div>
+              
+              <div class="row">
+                <select class="cardExpiry" name="cardExpiry" placeholder="MM" autocomplete="cc-exp" required >
+                  <option>
+                    MM
+                  </option>
+                  <option>
+                    01
+                  </option>
+                  <option>
+                    02
+                  </option>
+                  <option>
+                    03
+                  </option>
+                  <option>
+                    04
+                  </option>
+                  <option>
+                    05
+                  </option>
+                  <option>
+                    06
+                  </option>
+                  <option>
+                    07
+                  </option>
+                  <option>
+                    08
+                  </option>
+                  <option>
+                    09
+                  </option>
+                  <option>
+                    10
+                  </option>
+                  <option>
+                    11
+                  </option>
+                  <option>
+                    12
+                  </option>
+                </select>
 
-              <label>CARD NUMBER</label>
-              <input type="tel" class="cardNumber" name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required autofocus />
-              <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                <select class="cardExpiry" name="cardExpiry" placeholder="YY" autocomplete="cc-exp" required >
+                  <option>
+                    YY
+                  </option>
+                  <option>
+                    17
+                  </option>
+                  <option>
+                    18
+                  </option>
+                  <option>
+                    19
+                  </option>
+                  <option>
+                    20
+                  </option>
+                  <option>
+                    21
+                  </option>
+                  <option>
+                    22
+                  </option>
+                  <option>
+                    23
+                  </option>
+                  <option>
+                    24
+                  </option>
+                  <option>
+                    25
+                  </option>
+                  <option>
+                    26
+                  </option>
+                  <option>
+                    27
+                  </option>
+                  <option>
+                    28
+                  </option>
+                </select>
+              </div>
 
-              <label for="nameOnCard">NAME ON CARD</label>
-              <input type="text" class="nameOnCard" name="nameOnCard" placeholder="Please enter the name as it appears on the card" />
-          
-              <label for="cardExpiry">EXPIRATION DATE</label>
-              <input type="tel" class="cardExpiry" name="cardExpiry" placeholder="MM" autocomplete="cc-exp" required />
-              <input type="tel" class="cardExpiry" name="cardExpiry" placeholder="YY" autocomplete="cc-exp" required />
-            
-              <label for="cardCVC">CV2 CODE</label>
-              <input type="tel" class="cardCVC" name="cardCVC" placeholder="CVC" autocomplete="cc-csc" required />
-         
-              <button class="submitButton" type="submit">Submit My Order</button>
+              <div class="row">
+                <label for="cardCVC">CV2 CODE</label>
+              </div>
+              
+              <div class="row">
+                <input type="tel" class="cardCVC" name="cardCVC" placeholder="CVC" autocomplete="cc-csc" required />
+              </div>
 
               <p class="payment-errors"></p>
             </form>
             <!-- CREDIT CARD FORM ENDS HERE -->
-          </div><!-- #cardForm -->
-        </div> 
+          </div><!-- end #cardForm -->
+
+          <div id="alipay">
+            <p>Okay, <strong>AliPay</strong> it is!</p>
+            <p class="attention">Attention! Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken away from this site</p>
+          </div>
+        </div><!-- end twelve columns -->
+      </div><!-- end first row -->
+
+      <div id="cardholderAddr">
+
+        <hr>
+      
+        <h5>Please enter the cardholder's address</h5>
+
+        <button class="paymentOption" id="useDelAddrButton">Use same address as delivery</button>
+        <button class="paymentOption" id="newAddrButton">Use a different address</button>
+
+        <div class="row">
+          <div class="twelve columns main">
+            <div id="newAddrForm">
+              <!-- CARDHOLDER ADDRESS FORM STARTS HERE --> 
+              <form role="form">
+
+                <div class="row">
+                  <label>Company Name</label>
+                </div>
+                <div class="row">
+                  <input type="text" class="" name="companyName" placeholder="" autocomplete="cc-number" required autofocus />
+                </div>
+
+                <div class="row">
+                  <label>House Name/Number</label>
+                </div>
+                <div class="row">
+                  <input type="text" class="" name="houseNumber" placeholder="" />
+                </div>
+                
+                <div class="row">
+                  <label>Address line 1</label>
+                </div>
+                <div class="row">
+                  <input type="text" class="" name="address1" placeholder="" />
+                </div>
+
+                <div class="row">
+                  <label>Address Line 2</label>
+                </div>
+                <div class="row">
+                  <input type="text" class="" name="nameOnCard" placeholder="Enter the name or number of the cardholder's house" />
+                </div>
+
+                <div class="row">
+                  <label for="cardCVC">Town/City</label>
+                </div>
+                <div class="row">
+                  <input type="text" class="nameOnCard" name="nameOnCard" placeholder="Enter the name or number of the cardholder's house" />
+                </div>
+
+                <div class="row">
+                  <label for="cardCVC">County</label>
+                </div>
+                <div class="row">
+                  <input type="text" class="nameOnCard" name="nameOnCard" placeholder="Enter the name or number of the cardholder's house" />
+                </div>
+              </form>
+              <!-- CARDHOLDER ADDRESS FORM ENDS HERE -->
+            </div><!-- end #newAddrForm -->
+
+            <div id="useDeliveryAddr">
+              Okay, we will use the same address!
+            </div>
+
+          </div><!-- end twelve columns -->
+        </div><!-- end second row -->
+      </div><!-- end #cardholderAddr -->
+
+      <div class="row" id="submitBtn">
+        <button class="submitBtn" type="submit">&#128274; Submit My Order</button>
       </div>
-    </div>
+
+    </div><!-- end container -->
 
   	<!-- If you're using Stripe for payments -->
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
@@ -61,23 +261,7 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js'></script>
     <script src="js/index.js"></script>
     <script type="text/javascript" src="jquery.js"></script>
-    <script type="text/javascript">
-
-      document.getElementById('cardForm').style.display='none';
-
-      document.getElementById('cardButton').onclick=function(){
-        document.getElementById('cardForm').style.display='';
-        document.getElementById('paypal').style.display='none';
-      };
-
-      document.getElementById('paypal').style.display='none';
-
-      document.getElementById('paypalButton').onclick=function(){
-        document.getElementById('paypal').style.display='';
-        document.getElementById('cardForm').style.display='none';
-      };
-
-    </script>
+    <script src="js/tabs.js"></script>
 
   </body>
 </html>
