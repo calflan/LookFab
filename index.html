@@ -4,7 +4,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Simple Payment Form use Bootstrap</title>
+    <title>Checkout | LookFabulous</title>
 
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="sass/styles.css">
@@ -20,35 +20,29 @@
 
     <div class="row stages">
       <div class="four columns stage">
-        Delivery Address
+        <p>Delivery Address</p>
       </div>
 
       <div class="four columns stage">
-        Delivery Option
+        <p>Delivery Option</p>
       </div>
 
-      <div class="four columns stage">
-        <div class="current-stage">
-          Payment
-        </div>
+      <div class="four columns stage current-stage">
+        <p>Payment</p>
       </div>
     </div>
 
     <div class="container">
 
-      <h5>Select Payment Method</h5>
+      <h6>Select Payment Method</h6>
 
       <button class="paymentOption" id="cardButton">Card</button>
       <button class="paymentOption" id="paypalButton">PayPal</button>
       <button class="paymentOption" id="alipayButton">AliPay</button>
 
       
-      <div class="row">
+      <div class="row block">
         <div class="twelve columns main" id="main">
-          <div id="paypal">
-            <p>Okay, <strong>PayPal</strong> it is!</p>
-            <p class="attention">Attention! Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken away from this site</p>
-          </div>
           
           <div id="cardForm">
             <!-- CREDIT CARD FORM STARTS HERE -->
@@ -173,24 +167,29 @@
             <!-- CREDIT CARD FORM ENDS HERE -->
           </div><!-- end #cardForm -->
 
+          <div id="paypal">
+            <p>Okay, <strong>PayPal</strong> it is!</p>
+            <p class="attention">Attention! Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken to the PayPal site.</p>
+          </div>
+
           <div id="alipay">
             <p>Okay, <strong>AliPay</strong> it is!</p>
-            <p class="attention">Attention! Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken away from this site</p>
+            <p class="attention">Attention! Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken to the AliPay site.</p>
           </div>
         </div><!-- end twelve columns -->
       </div><!-- end first row -->
 
-      <div id="cardholderAddr">
+      <div class="block" id="cardholderAddr">
 
         <hr>
       
-        <h5>Please enter the cardholder's address</h5>
+        <h6>Please enter the cardholder's address</h6>
 
         <button class="paymentOption" id="useDelAddrButton">Use same address as delivery</button>
         <button class="paymentOption" id="newAddrButton">Use a different address</button>
 
         <div class="row">
-          <div class="twelve columns main">
+          <div class="twelve columns main" id="cardholderMain">
             <div id="newAddrForm">
               <!-- CARDHOLDER ADDRESS FORM STARTS HERE --> 
               <form role="form">
@@ -199,48 +198,48 @@
                   <label>Company Name</label>
                 </div>
                 <div class="row">
-                  <input type="text" class="" name="companyName" placeholder="" autocomplete="cc-number" required autofocus />
+                  <input type="text" class="cardholderField" name="companyName" placeholder="" autocomplete="cc-number" required autofocus />
                 </div>
 
                 <div class="row">
                   <label>House Name/Number</label>
                 </div>
                 <div class="row">
-                  <input type="text" class="" name="houseNumber" placeholder="" />
+                  <input type="text" class="cardholderField" name="houseNumber" placeholder="" />
                 </div>
                 
                 <div class="row">
                   <label>Address line 1</label>
                 </div>
                 <div class="row">
-                  <input type="text" class="" name="address1" placeholder="" />
+                  <input type="text" class="cardholderField" name="address1" placeholder="" />
                 </div>
 
                 <div class="row">
                   <label>Address Line 2</label>
                 </div>
                 <div class="row">
-                  <input type="text" class="" name="nameOnCard" placeholder="Enter the name or number of the cardholder's house" />
+                  <input type="text" class="cardholderField" name="address2" placeholder="" />
                 </div>
 
                 <div class="row">
-                  <label for="cardCVC">Town/City</label>
+                  <label>Town/City</label>
                 </div>
                 <div class="row">
-                  <input type="text" class="nameOnCard" name="nameOnCard" placeholder="Enter the name or number of the cardholder's house" />
+                  <input type="text" class="cardholderField" name="TownCity" placeholder="" />
                 </div>
 
                 <div class="row">
-                  <label for="cardCVC">County</label>
+                  <label>County</label>
                 </div>
                 <div class="row">
-                  <input type="text" class="nameOnCard" name="nameOnCard" placeholder="Enter the name or number of the cardholder's house" />
+                  <input type="text" class="cardholderField" name="County" placeholder="" />
                 </div>
               </form>
               <!-- CARDHOLDER ADDRESS FORM ENDS HERE -->
             </div><!-- end #newAddrForm -->
 
-            <div id="useDeliveryAddr">
+            <div class="attention" id="useDeliveryAddr">
               Okay, we will use the same address!
             </div>
 
@@ -248,11 +247,59 @@
         </div><!-- end second row -->
       </div><!-- end #cardholderAddr -->
 
-      <div class="row" id="submitBtn">
+      <hr>
+
+      <div class="row block orderSummary" id="orderSummary">
+        <div class="orderHead">
+          <h6>Order summary</h6>
+        </div><!--end orderHead -->
+
+        <div class="orderBody">
+          <div class="row">
+            <div class="six columns">
+              <p>Bulldog Cream</p>
+            </div>
+            <div class="six columns">
+              <p class="price">£73.99</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="six columns">
+              <p>Bulldog Original Face Wash (150ml)</p>
+            </div>
+            <div class="six columns">
+              <p class="price">£75.99</p>
+            </div>
+          </div>
+
+          <div class="row delivery">
+            <div class="twelve columns">
+              <p class="price">SUBTOTAL: £149.98</p>
+              <p class="price">Delivery: £0.00</p>
+            </div>
+          </div>
+        </div><!-- end orderBody -->
+
+        <div class="orderTotal">
+          <p>TOTAL: £149.98</p>
+        </div>
+
+      </div><!-- end orderSummary -->
+
+      <div class="row block" id="submitBtn">
         <button class="submitBtn" type="submit">&#128274; Submit My Order</button>
+        <p class="terms">By placing this order, you are confirming that you agree to our Terms and Conditions and Privacy Policy.</p>
       </div>
 
+
+
     </div><!-- end container -->
+
+    <footer>
+      <p>LookFabulous Ltd</p>
+      <p>Mian House Gebork Way, Gebork Park, Cheshire. England. CW5 9XA</p>
+    </footer>
 
   	<!-- If you're using Stripe for payments -->
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>

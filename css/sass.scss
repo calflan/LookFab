@@ -18,9 +18,18 @@ header {
 	text-align: left;
 }
 
+footer {
+  margin: 0;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   font-weight: 300; 
 }
 
@@ -38,20 +47,85 @@ p {
 
 
 .main {
-	margin-top: 10px;
-	background: whitesmoke;
-    padding: 20px;
-    text-align: left;
+  margin-top: 10px;
+  color: #fff;
+  background: black;
+  padding: 20px;
+  text-align: left;
+}
+
+.block {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .stages {background-color: whitesmoke; margin-bottom: 10px;}
-.stage {padding: 10px;}
-.current-stage {background-color: grey; margin: 0;}
+.stage {
+  padding: 10px;
+
+  p {
+    font-size: 12px;
+  }
+}
+.current-stage {background-color: #28bdb3; margin: 0;}
 
 .attention {color: orange; font-weight: bold;}
 
+.cardholderField {
+  width: 100%;
+}
 
-/*FORM*/
+.orderSummary {
+  text-align: left;
+  border: 1px solid grey;
+  h6 {
+    margin: 0;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+.orderHead {
+  margin-bottom: 10px;
+  background-color: #28bdb3;
+  padding: 5px;
+}
+
+.orderBody {
+  padding: 10px;
+  .row {
+    margin-bottom: 5px;
+  }
+}
+
+.orderTotal {
+  border-top: 1px solid grey;
+  background-color: #28bdb3;
+  padding: 5px;
+  text-align: center;
+  p {
+    font-size: 18px;
+  }
+}
+
+.price {
+  text-align: right;
+  font-weight: bold;
+}
+
+.delivery {
+  border-top: 1px solid grey;
+  padding-top: 5px;
+}
+
+
+.terms {
+  font-size: 12px;
+}
+
+
+/*FORMS*/
 
 .cardImg {height: 100%;}
 .cardNumber {width: $full;}
@@ -61,14 +135,13 @@ p {
 
 .submitBtn {
 	margin-top: 20px;
-	margin-bottom: 40px;
-	background-color: #29C52B;
+  background-color: #3d891f;
 	color: black;
 	font-size: 16px;
 	width: 100%;
 
-	&:hover, &:focus {
-		background-color: yellow;
+	&:hover {
+    background-color: #28bdb3;
 	}
 }
 
@@ -79,6 +152,11 @@ form {
 		margin-bottom: 10px;
 	}
 }
+
+
+
+
+
 
 button,
 input[type="submit"],
@@ -122,7 +200,8 @@ input[type="tel"] {
   border: 1px solid #D1D1D1;
   border-radius: 4px;
   box-shadow: none;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 /* Removes awkward default styles on some inputs for iOS */
 input[type="number"],
