@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Checkout | LookFabulous</title>
 
-    <link rel="stylesheet" href="css/sass.css">
+    <link rel="stylesheet" href="css/sass.min.css"><!-- This is the main minified css file -->
+    <link rel="stylesheet" href="css/skeleton.css"><!-- This is the css for the responsive grid-->
 
   </head>
 
@@ -38,258 +39,269 @@
       <button class="paymentOption" id="paypalButton">PayPal</button>
       <button class="paymentOption" id="alipayButton">AliPay</button>
 
-      
-      <div class="row block">
-        <div class="twelve columns main" id="main">
-          
-          <div id="cardForm">
-            <!-- CREDIT CARD FORM STARTS HERE -->
-
-            <p>Okay, please enter your card details below:</p>
+      <form onsubmit="return validateForm()">
+        <div class="row block">
+          <div class="twelve columns main" id="main">
             
-            <img class="cardImg" src="img/creditCards.png">
-            <form role="form">
-              <div class="row">
-                <label>CARD NUMBER</label>
-              </div>
-              <div class="row">
-                <input type="tel" class="cardNumber" name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required autofocus />
-              </div>
-              <div class="row">
-                <label for="nameOnCard">NAME ON CARD</label>
-              </div>
-              <div class="row">
-                <input type="text" class="nameOnCard" name="nameOnCard" placeholder="Please enter the name as it appears on the card" />
-              </div>
+            <div id="cardForm">
+              <!-- CREDIT CARD FORM STARTS HERE -->
+
+              <p>Okay, please enter your card details below:</p>
               
-              <div class="row">
-                <label for="cardExpiry">EXPIRATION DATE</label>
-              </div>
-              
-              <div class="row">
-                <select class="cardExpiry" name="cardExpiry" placeholder="MM" autocomplete="cc-exp" required >
-                  <option>
-                    MM
-                  </option>
-                  <option>
-                    01
-                  </option>
-                  <option>
-                    02
-                  </option>
-                  <option>
-                    03
-                  </option>
-                  <option>
-                    04
-                  </option>
-                  <option>
-                    05
-                  </option>
-                  <option>
-                    06
-                  </option>
-                  <option>
-                    07
-                  </option>
-                  <option>
-                    08
-                  </option>
-                  <option>
-                    09
-                  </option>
-                  <option>
-                    10
-                  </option>
-                  <option>
-                    11
-                  </option>
-                  <option>
-                    12
-                  </option>
-                </select>
-
-                <select class="cardExpiry" name="cardExpiry" placeholder="YY" autocomplete="cc-exp" required >
-                  <option>
-                    YY
-                  </option>
-                  <option>
-                    17
-                  </option>
-                  <option>
-                    18
-                  </option>
-                  <option>
-                    19
-                  </option>
-                  <option>
-                    20
-                  </option>
-                  <option>
-                    21
-                  </option>
-                  <option>
-                    22
-                  </option>
-                  <option>
-                    23
-                  </option>
-                  <option>
-                    24
-                  </option>
-                  <option>
-                    25
-                  </option>
-                  <option>
-                    26
-                  </option>
-                  <option>
-                    27
-                  </option>
-                  <option>
-                    28
-                  </option>
-                </select>
-              </div>
-
-              <div class="row">
-                <label for="cardCVC">CV2 CODE</label>
-              </div>
-              
-              <div class="row">
-                <input type="tel" class="cardCVC" name="cardCVC" placeholder="CVC" autocomplete="cc-csc" required />
-              </div>
-
-              <p class="payment-errors"></p>
-            </form>
-            <!-- CREDIT CARD FORM ENDS HERE -->
-          </div><!-- end #cardForm -->
-
-          <div id="paypal">
-            <p>Okay, <strong>PayPal</strong> it is!</p>
-            <p class="attention">Attention! Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken to the PayPal site.</p>
-          </div>
-
-          <div id="alipay">
-            <p>Okay, <strong>AliPay</strong> it is!</p>
-            <p class="attention">Attention! Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken to the AliPay site.</p>
-          </div>
-        </div><!-- end twelve columns -->
-      </div><!-- end first row -->
-
-      <div class="block" id="cardholderAddr">
-
-        <hr>
-      
-        <h6>Please enter the cardholder's address</h6>
-
-        <button class="paymentOption" id="useDelAddrButton">Use same address as delivery</button>
-        <button class="paymentOption" id="newAddrButton">Use a different address</button>
-
-        <div class="row">
-          <div class="twelve columns main" id="cardholderMain">
-            <div id="newAddrForm">
-              <!-- CARDHOLDER ADDRESS FORM STARTS HERE --> 
-              <form role="form">
-
+              <img class="cardImg" src="img/creditCards.png">
                 <div class="row">
-                  <label>Company Name</label>
+                  <label>CARD NUMBER</label>
                 </div>
                 <div class="row">
-                  <input type="text" class="cardholderField" name="companyName" placeholder="" autocomplete="cc-number" required autofocus />
-                </div>
-
-                <div class="row">
-                  <label>House Name/Number</label>
+                  <input type="tel" id="cardNumber" class="cardNumber" name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required autofocus />
                 </div>
                 <div class="row">
-                  <input type="text" class="cardholderField" name="houseNumber" placeholder="" />
+                  <label for="nameOnCard">NAME ON CARD</label>
+                </div>
+                <div class="row">
+                  <input type="text" class="nameOnCard" name="nameOnCard" placeholder="Please enter the name as it appears on the card" required/>
                 </div>
                 
                 <div class="row">
-                  <label>Address line 1</label>
+                  <label for="cardExpiry">EXPIRATION DATE</label>
                 </div>
+                
                 <div class="row">
-                  <input type="text" class="cardholderField" name="address1" placeholder="" />
+                  <select class="cardExpiry" name="cardExpiry"  autocomplete="cc-exp" required >
+                    <option disabled selected hidden>
+                    </option>
+                    <option>
+                      01
+                    </option>
+                    <option>
+                      02
+                    </option>
+                    <option>
+                      03
+                    </option>
+                    <option>
+                      04
+                    </option>
+                    <option>
+                      05
+                    </option>
+                    <option>
+                      06
+                    </option>
+                    <option>
+                      07
+                    </option>
+                    <option>
+                      08
+                    </option>
+                    <option>
+                      09
+                    </option>
+                    <option>
+                      10
+                    </option>
+                    <option>
+                      11
+                    </option>
+                    <option>
+                      12
+                    </option>
+                  </select>
+
+                  <select class="cardExpiry" name="cardExpiry" autocomplete="cc-exp" required >
+                    <option disabled selected hidden>
+                    </option>
+                    <option>
+                      17
+                    </option>
+                    <option>
+                      18
+                    </option>
+                    <option>
+                      19
+                    </option>
+                    <option>
+                      20
+                    </option>
+                    <option>
+                      21
+                    </option>
+                    <option>
+                      22
+                    </option>
+                    <option>
+                      23
+                    </option>
+                    <option>
+                      24
+                    </option>
+                    <option>
+                      25
+                    </option>
+                    <option>
+                      26
+                    </option>
+                    <option>
+                      27
+                    </option>
+                    <option>
+                      28
+                    </option>
+                  </select>
                 </div>
 
                 <div class="row">
-                  <label>Address Line 2</label>
+                  <label for="cardCVC">CV2 CODE</label>
                 </div>
+                
                 <div class="row">
-                  <input type="text" class="cardholderField" name="address2" placeholder="" />
+                  <input type="tel" class="smallInput" name="cardCVC" placeholder="CVC" autocomplete="cc-csc" required />
                 </div>
 
-                <div class="row">
-                  <label>Town/City</label>
-                </div>
-                <div class="row">
-                  <input type="text" class="cardholderField" name="TownCity" placeholder="" />
-                </div>
+                <p class="payment-errors"></p>
+              <!-- CREDIT CARD FORM ENDS HERE -->
+            </div><!-- end #cardForm -->
 
-                <div class="row">
-                  <label>County</label>
-                </div>
-                <div class="row">
-                  <input type="text" class="cardholderField" name="County" placeholder="" />
-                </div>
-              </form>
-              <!-- CARDHOLDER ADDRESS FORM ENDS HERE -->
-            </div><!-- end #newAddrForm -->
-
-            <div class="attention" id="useDeliveryAddr">
-              Okay, we will use the same address!
+            <div id="paypal">
+              <p>Okay, <strong>PayPal</strong> it is!</p>
+              <p class="attention">Attention! Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken to the PayPal site.</p>
             </div>
 
+            <div id="alipay">
+              <p>Okay, <strong>AliPay</strong> it is!</p>
+              <p class="attention">Attention! Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken to the AliPay site.</p>
+            </div>
           </div><!-- end twelve columns -->
-        </div><!-- end second row -->
-      </div><!-- end #cardholderAddr -->
+        </div><!-- end first row -->
 
-      <hr>
+        <div class="block" id="cardholderAddr">
 
-      <div class="row block orderSummary" id="orderSummary">
-        <div class="orderHead">
-          <h6>Order summary</h6>
-        </div><!--end orderHead -->
+          <hr>
+        
+          <h6>Please enter the cardholder's address</h6>
 
-        <div class="orderBody">
-          <div class="row">
-            <div class="six columns">
-              <p>Bulldog Cream</p>
-            </div>
-            <div class="six columns">
-              <p class="price">£73.99</p>
-            </div>
-          </div>
+          <button class="paymentOption" id="useDelAddrButton">Use same address as delivery</button>
+          <button class="paymentOption" id="newAddrButton">Use a different address</button>
 
           <div class="row">
-            <div class="six columns">
-              <p>Bulldog Original Face Wash (150ml)</p>
+            <div class="twelve columns main" id="cardholderMain">
+              <div id="newAddrForm">
+                <!-- CARDHOLDER ADDRESS FORM STARTS HERE -->
+                  <div class="row">
+                    <label>Company Name</label>
+                  </div>
+                  <div class="row">
+                    <input type="text" name="companyName" placeholder="(If applicable)" autocomplete="cc-number" autofocus />
+                  </div>
+
+                  <div class="row">
+                    <label>House Number/Name</label>
+                  </div>
+                  <div class="row">
+                    <input type="text" name="houseNumber" placeholder="Enter your house number" required/>
+                  </div>
+                  
+                  <div class="row">
+                    <label>Address line 1</label>
+                  </div>
+                  <div class="row">
+                    <input type="text" name="address1" placeholder="Enter the first line of your address" required/>
+                  </div>
+
+                  <div class="row">
+                    <label>Address Line 2</label>
+                  </div>
+                  <div class="row">
+                    <input type="text" name="address2" placeholder="Enter the second line of your address" required/>
+                  </div>
+
+                  <div class="row">
+                    <label>Town/City</label>
+                  </div>
+                  <div class="row">
+                    <input type="text" name="TownCity" placeholder="Enter the town or city of residence" required/>
+                  </div>
+
+                  <div class="row">
+                    <label>County</label>
+                  </div>
+                  <div class="row">
+                    <input type="text" name="County" placeholder="Enter the county the twon or city comes under" required/>
+                  </div>
+
+                  <div class="row">
+                    <label>Postcode</label>
+                  </div>
+                  <div class="row">
+                    <input type="text" class="smallInput" name="Postcode" placeholder="Enter the postcode for the address" required/>
+                  </div>
+                <!-- CARDHOLDER ADDRESS FORM ENDS HERE -->
+              </div><!-- end #newAddrForm -->
+
+              <div class="attention" id="useDeliveryAddr">
+                Okay, we will use the same address!
+              </div>
+
+            </div><!-- end twelve columns -->
+          </div><!-- end second row -->
+        </div><!-- end #cardholderAddr -->
+
+        <hr>
+
+        <div class="row block orderSummary" id="orderSummary">
+          <div class="orderHead">
+            <h6>Order summary</h6>
+          </div><!--end orderHead -->
+
+          <div class="orderBody">
+            <div class="row">
+              <div class="six columns">
+                <p>Bulldog Cream</p>
+              </div>
+              <div class="six columns">
+                <p class="price">£73.99</p>
+              </div>
             </div>
-            <div class="six columns">
-              <p class="price">£75.99</p>
+
+            <div class="row">
+              <div class="six columns">
+                <p>Bulldog Original Face Wash (150ml)</p>
+              </div>
+              <div class="six columns">
+                <p class="price">£75.99</p>
+              </div>
             </div>
+
+            <div class="row delivery">
+              <div class="twelve columns">
+                <p class="price">SUBTOTAL: £149.98</p>
+                <p class="price">Delivery: £0.00</p>
+                <div class="delivery">
+                  <p>Delivering to:</p>
+                  <p>3 Lee Fold</p>
+                  <p>Astley</p>
+                  <p>Manchester</p>
+                  <p>M29 7FQ</p>                  
+                </div>
+              </div>
+            </div>
+
+            
+          </div><!-- end orderBody -->
+
+          <div class="orderTotal">
+            <p>TOTAL: £149.98</p>
           </div>
 
-          <div class="row delivery">
-            <div class="twelve columns">
-              <p class="price">SUBTOTAL: £149.98</p>
-              <p class="price">Delivery: £0.00</p>
-            </div>
-          </div>
-        </div><!-- end orderBody -->
+          
 
-        <div class="orderTotal">
-          <p>TOTAL: £149.98</p>
+        </div><!-- end orderSummary -->
+
+        <div class="row block" id="submitBtn">
+          <button class="submitBtn" type="submit">&#128274; Submit My Order</button>
+          <p class="terms">By placing this order, you are confirming that you agree to our Terms and Conditions and Privacy Policy.</p>
         </div>
-
-      </div><!-- end orderSummary -->
-
-      <div class="row block" id="submitBtn">
-        <button class="submitBtn" type="submit">&#128274; Submit My Order</button>
-        <p class="terms">By placing this order, you are confirming that you agree to our Terms and Conditions and Privacy Policy.</p>
-      </div>
-
+      </form>
 
 
     </div><!-- end container -->
@@ -299,14 +311,12 @@
       <p>Mian House Gebork Way, Gebork Park, Cheshire. England. CW5 9XA</p>
     </footer>
 
-  	<!-- If you're using Stripe for payments -->
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    
+    <!-- SCRIPTS -->
 
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js'></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js'></script>
-    <script src="js/index.js"></script>
-    <script type="text/javascript" src="jquery.js"></script>
     <script src="js/tabs.js"></script>
+<!--     <script src="js/jquery.validate.js"></script>
+ -->
 
   </body>
 </html>
