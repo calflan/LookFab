@@ -1,3 +1,9 @@
+<!--
+* Author: Calum James Flanagan
+* Institution: Edge Hill University
+-->
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,10 +20,10 @@
   <body>
 
     <header>
-      LookFabulous
+      <h1>LookFabulous</h1>
     </header>
 
-    <div class="row stages">
+    <section class="row stages">
       <div class="four columns stage">
         <p>Delivery Address</p>
       </div>
@@ -29,21 +35,21 @@
       <div class="four columns stage current-stage">
         <p>Payment</p>
       </div>
-    </div>
+    </section>
 
     <div class="container">
 
-      <h6>Select Payment Method</h6>
+      <h2>Select Payment Method</h2>
 
       <button class="paymentOption" id="cardButton">Card</button>
       <button class="paymentOption" id="paypalButton">PayPal</button>
       <button class="paymentOption" id="alipayButton">AliPay</button>
 
-      <form onsubmit="return validateForm()">
+      <form id="form"method="post" onsubmit="return !!(validateCardNum() || validateNameOnCard() || validateExpMonth() || validateExpYear() || validateCV2());" onchange="return !!(validateCardNum() || validateNameOnCard() || validateExpMonth() || validateExpYear() || validateCV2());">
         <section class="row block">
           <div class="twelve columns main" id="main">
 
-            <div id="cardForm">
+            <article id="cardForm">
               <!-- CREDIT CARD FORM STARTS HERE -->
 
               <p>Okay, please enter your card details below:</p>
@@ -53,13 +59,13 @@
                   <label>CARD NUMBER</label>
                 </div>
                 <div class="row">
-                  <input type="tel" id="cardNumber" class="cardNumber" name="cardNumber"  autocomplete="cc-number" required autofocus />
+                  <input type="tel" id="cardNumber" class="cardNumber" name="cardNumber"/>
                 </div>
                 <div class="row">
                   <label for="nameOnCard">NAME ON CARD</label>
                 </div>
                 <div class="row">
-                  <input type="text" class="nameOnCard" name="nameOnCard" required/>
+                  <input type="text" id="nameOnCard" class="nameOnCard" name="nameOnCard"/>
                 </div>
 
                 <div class="row">
@@ -68,99 +74,21 @@
 
                 <div class="row">
                   <div class="four columns">
-                    <label>Month</label>
+                    <label>Month (MM)</label>
                   </div>
                   <div class="four columns">
-                    <label>Year</label>
+                    <label>Year (YYYY)</label>
                   </div>
                 </div>
 
                 <div class="row">
 
                   <div class="four columns">
-                    <select name="cardExpiry"  autocomplete="cc-exp" required >
-                      <option disabled selected hidden>
-                      </option>
-                      <option>
-                        01
-                      </option>
-                      <option>
-                        02
-                      </option>
-                      <option>
-                        03
-                      </option>
-                      <option>
-                        04
-                      </option>
-                      <option>
-                        05
-                      </option>
-                      <option>
-                        06
-                      </option>
-                      <option>
-                        07
-                      </option>
-                      <option>
-                        08
-                      </option>
-                      <option>
-                        09
-                      </option>
-                      <option>
-                        10
-                      </option>
-                      <option>
-                        11
-                      </option>
-                      <option>
-                        12
-                      </option>
-                    </select>
+                    <input type="text" name="expMonth" id="expMonth">
                   </div>
 
                   <div class="four columns">
-                    <select name="cardExpiry" autocomplete="cc-exp" required >
-                      <option disabled selected hidden>
-                      </option>
-                      <option>
-                        17
-                      </option>
-                      <option>
-                        18
-                      </option>
-                      <option>
-                        19
-                      </option>
-                      <option>
-                        20
-                      </option>
-                      <option>
-                        21
-                      </option>
-                      <option>
-                        22
-                      </option>
-                      <option>
-                        23
-                      </option>
-                      <option>
-                        24
-                      </option>
-                      <option>
-                        25
-                      </option>
-                      <option>
-                        26
-                      </option>
-                      <option>
-                        27
-                      </option>
-                      <option>
-                        28
-                      </option>
-                    </select>
+                    <input type="text" name="expYear" id="expYear">
                   </div>
                 </div>
 
@@ -169,22 +97,23 @@
                 </div>
 
                 <div class="row">
-                  <input type="tel" class="smallInput" name="cardCVC" autocomplete="cc-csc" required />
+                  <input type="tel" class="smallInput" name="cardCV2" id="cardCV2">
                 </div>
-
-                <p class="payment-errors"></p>
               <!-- CREDIT CARD FORM ENDS HERE -->
-            </div><!-- end #cardForm -->
+            </article><!-- end #cardForm -->
 
-            <div id="paypal">
+            <article id="paypal">
               <p>Okay, <strong>PayPal</strong> it is!</p>
-              <p class="attention">Attention! Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken to the PayPal site.</p>
-            </div>
+              <p class="attention">Attention!</p>
+              <p class="attention">Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken to the PayPal site.</p>
+              <p class="attention">Also, please note that using the PayPal checkout will attract a 1% surcharge to the cost of your order.</p>
+            </article>
 
-            <div id="alipay">
+            <article id="alipay">
               <p>Okay, <strong>AliPay</strong> it is!</p>
-              <p class="attention">Attention! Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken to the AliPay site.</p>
-            </div>
+              <p class="attention">Attention!</p>
+              <p class="attention">Choosing this option means that after you press 'SUBMIT MY ORDER', you will be taken to the AliPay site.</p>
+            </article>
           </div><!-- end twelve columns -->
         </section><!-- end first row -->
 
@@ -192,69 +121,69 @@
 
           <hr>
 
-          <h6>Please enter the cardholder's address</h6>
+          <h2>Please enter the cardholder's address</h2>
 
           <button class="addressOption" id="useDelAddrButton">Use same address as delivery</button>
           <button class="addressOption" id="newAddrButton">Use a different address</button>
 
           <div class="row">
             <div class="twelve columns main" id="cardholderMain">
-              <div id="newAddrForm">
+              <article id="newAddrForm">
                 <!-- CARDHOLDER ADDRESS FORM STARTS HERE -->
                   <div class="row">
                     <label>Company Name</label>
                   </div>
                   <div class="row">
-                    <input type="text" name="companyName" autocomplete="cc-number" autofocus />
+                    <input type="text" name="companyName"/>
                   </div>
 
                   <div class="row">
                     <label>House Number/Name</label>
                   </div>
                   <div class="row">
-                    <input type="text" name="houseNumber" required/>
+                    <input type="text" name="houseNumber"/>
                   </div>
 
                   <div class="row">
                     <label>Address line 1</label>
                   </div>
                   <div class="row">
-                    <input type="text" name="address1" required/>
+                    <input type="text" name="address1"/>
                   </div>
 
                   <div class="row">
                     <label>Address Line 2</label>
                   </div>
                   <div class="row">
-                    <input type="text" name="address2" required/>
+                    <input type="text" name="address2"/>
                   </div>
 
                   <div class="row">
                     <label>Town/City</label>
                   </div>
                   <div class="row">
-                    <input type="text" name="TownCity" required/>
+                    <input type="text" name="TownCity"/>
                   </div>
 
                   <div class="row">
                     <label>County</label>
                   </div>
                   <div class="row">
-                    <input type="text" name="County" required/>
+                    <input type="text" name="County"/>
                   </div>
 
                   <div class="row">
                     <label>Postcode</label>
                   </div>
                   <div class="row">
-                    <input type="text" class="smallInput" name="Postcode" required/>
+                    <input type="text" class="smallInput" name="Postcode"/>
                   </div>
                 <!-- CARDHOLDER ADDRESS FORM ENDS HERE -->
-              </div><!-- end #newAddrForm -->
+              </article><!-- end #newAddrForm -->
 
-              <div class="attention" id="useDeliveryAddr">
+              <article class="attention" id="useDeliveryAddr">
                 Okay, we will use the same address!
-              </div>
+              </article>
 
             </div><!-- end twelve columns -->
           </div><!-- end second row -->
@@ -264,29 +193,29 @@
 
         <section class="row block orderSummary" id="orderSummary">
           <div class="orderHead">
-            <h6>Order summary</h6>
+            <h3>Order summary</h3>
           </div><!--end orderHead -->
 
-          <div class="orderBody">
-            <div class="row">
+          <article class="orderBody">
+            <section class="row">
               <div class="six columns">
                 <p>Bulldog Cream</p>
               </div>
               <div class="six columns">
                 <p class="price">£73.99</p>
               </div>
-            </div>
+            </section>
 
-            <div class="row">
+            <section class="row">
               <div class="six columns">
                 <p>Bulldog Original Face Wash (150ml)</p>
               </div>
               <div class="six columns">
                 <p class="price">£75.99</p>
               </div>
-            </div>
+            </section>
 
-            <div class="row delivery">
+            <section class="row delivery">
               <div class="twelve columns">
                 <p class="price">SUBTOTAL: £149.98</p>
                 <p class="price">Delivery: £0.00</p>
@@ -298,21 +227,16 @@
                   <p>M29 7FQ</p>
                 </div>
               </div>
-            </div>
+            </section>
+          </article><!-- end orderBody -->
 
-
-          </div><!-- end orderBody -->
-
-          <div class="orderTotal">
+          <article class="orderTotal">
             <p>TOTAL: £149.98</p>
-          </div>
-
-
-
+          </article>
         </section><!-- end orderSummary -->
 
         <div class="row block" id="submitBtn">
-          <button class="submitBtn" type="submit">&#128274; Submit My Order</button>
+          <button class="submitBtn" type="submit" id="submit">&#128274; Submit My Order</button>
           <p class="terms">By placing this order, you are confirming that you agree to our Terms and Conditions and Privacy Policy.</p>
         </div>
       </form>
@@ -322,15 +246,14 @@
 
     <footer>
       <p>LookFabulous Ltd</p>
-      <p>Mian House Gebork Way, Gebork Park, Cheshire. England. CW5 9XA</p>
+      <p>123 Cheshire Way Rd, Cheshire, England, CW5 9XA</p>
     </footer>
 
 
     <!-- SCRIPTS -->
 
     <script src="js/tabs.js"></script>
-<!--     <script src="js/jquery.validate.js"></script>
- -->
+    <script src="js/validation.js"></script>
 
   </body>
 </html>

@@ -1,7 +1,7 @@
-/*
-* Author: Calum James Flanagan
-* Institution: Edge Hill University
-*/
+/* --------------------------------- *
+ * Author: Calum James Flanagan      *
+ * Institution: Edge Hill University *
+ * --------------------------------- */
 
 
 document.getElementById('main').style.display='';
