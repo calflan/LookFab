@@ -45,7 +45,7 @@
       <button class="paymentOption" id="paypalButton">PayPal</button>
       <button class="paymentOption" id="alipayButton">AliPay</button>
 
-      <form id="form"method="post" onsubmit="return !!(validateCardNum() || validateNameOnCard() || validateExpMonth() || validateExpYear() || validateCV2());" onchange="return !!(validateCardNum() || validateNameOnCard() || validateExpMonth() || validateExpYear() || validateCV2());">
+      <form id="form"method="post" onsubmit="return !!(validateCardNum() || validateNameOnCard() || validateExpMonth() || validateExpYear() || validateCV2());">
         <section class="row block">
           <div class="twelve columns main" id="main">
 
@@ -54,18 +54,18 @@
 
               <p>Okay, please enter your card details below:</p>
 
-              <img class="cardImg" src="img/creditCards.png">
+              <img class="cardImg" src="img/creditCards.png" alt="Credit card types">
                 <div class="row">
                   <label>CARD NUMBER</label>
                 </div>
                 <div class="row">
-                  <input type="tel" id="cardNumber" class="cardNumber" name="cardNumber"/>
+                  <input type="tel" id="cardNumber" class="cardNumber" name="cardNumber" onchange="return validateCardNum();"/>
                 </div>
                 <div class="row">
                   <label for="nameOnCard">NAME ON CARD</label>
                 </div>
                 <div class="row">
-                  <input type="text" id="nameOnCard" class="nameOnCard" name="nameOnCard"/>
+                  <input type="text" id="nameOnCard" class="nameOnCard" name="nameOnCard" onchange="return validateNameOnCard();"/>
                 </div>
 
                 <div class="row">
@@ -84,11 +84,11 @@
                 <div class="row">
 
                   <div class="four columns">
-                    <input type="text" name="expMonth" id="expMonth">
+                    <input type="text" name="expMonth" id="expMonth" onchange="return validateExpMonth();">
                   </div>
 
                   <div class="four columns">
-                    <input type="text" name="expYear" id="expYear">
+                    <input type="text" name="expYear" id="expYear" onchange="return validateExpYear();">
                   </div>
                 </div>
 
@@ -97,7 +97,7 @@
                 </div>
 
                 <div class="row">
-                  <input type="tel" class="smallInput" name="cardCV2" id="cardCV2">
+                  <input type="tel" class="smallInput" name="cardCV2" id="cardCV2" onchange="return validateCV2();">
                 </div>
               <!-- CREDIT CARD FORM ENDS HERE -->
             </article><!-- end #cardForm -->
@@ -221,10 +221,10 @@
                 <p class="price">Delivery: £0.00</p>
                 <div class="delivery">
                   <p>Delivering to:</p>
-                  <p>3 Lee Fold</p>
-                  <p>Astley</p>
+                  <p>3 Leigh Road</p>
+                  <p>Asley</p>
                   <p>Manchester</p>
-                  <p>M29 7FQ</p>
+                  <p>M29 Z5U</p>
                 </div>
               </div>
             </section>

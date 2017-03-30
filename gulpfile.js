@@ -7,18 +7,35 @@ var sass = require('gulp-sass');
 // Assign css minifier to the variable 'cssmin'
 var cssmin = require('gulp-cssmin');
 
+// Assign JavaScript minifier to the variable 'jsmin'
+var jsmin = require('gulp-jsmin');
+
 // Assign gulp's renaming dependencies to the variable 'rename'
 var rename = require('gulp-rename');
 
-// Assign the sass file that is to be compiled, to the variable 'input'
-var input = 'css/sass.scss'
+// Assign the sass file that is to be compiled, to the variable 'sassInput'
+var sassInput = 'css/sass.scss'
 
 /*
-* Assign the directory 'css' (which is where the 
-* resulting minified css file will be outputted), 
-* to the variable 'output'
+* Assign the directory 'css' (which is where the
+* resulting minified css file will be outputted),
+* to the variable 'sassOutput'
 */
-var output = 'css';
+var sassOutput = 'css';
+
+// Grab the JS files and assign them to the variable 'jsInput'
+var jsInput = [
+	'js/validation.js',
+	'js/tabs.js'
+];
+
+/*
+* Assign the directory 'js' (which is where the
+* resulting minified JS files will be outputted),
+* to the variable 'jsOutput'
+*/
+var jsOutput = 'js';
+
 
 // Assign error logs to the the variable 'errors'
 var errors = {
@@ -30,17 +47,19 @@ var errors = {
 
 
 /*
-* This task will run the 'default' task along with the 
-* 'sass' task below (even when the default task does 
-* not contain anything).
+* This task will run the 'default' task along with the
+* 'sass' and 'js' tasks below, even when the default task does
+* not contain anything. This means that the 'gulp' command
+* can be used to run all of the tasks at the same time,
+* instead of running 'gulp sass', then 'gulp js' for example.
 */
-gulp.task('default', ['sass'], function() {
-	
+gulp.task('default', ['sass', 'js'], function() {
+
 });
 
 
 /*
-* This task is ran to compile the sass file into a 
+* This task is ran to compile the sass file into a
 * minified css file, so that it can be read by the HTML.
 *
 * It takes the 'input' variable and compiles the sass it
@@ -50,7 +69,7 @@ gulp.task('default', ['sass'], function() {
 gulp.task('sass', function() {
 	return gulp
    // Find `sass.scss` file in the `css/` folder
-   .src(input)
+   .src(sassInput)
 
    // Run Sass on file and log any errors
    .pipe(sass(errors).on('error', sass.logError))
@@ -62,10 +81,22 @@ gulp.task('sass', function() {
    .pipe(rename({suffix: '.min'}))
 
    // Write the resulting CSS in the output destination
-   .pipe(gulp.dest(output));
+   .pipe(gulp.dest(sassOutput));
 
 });
 
+gulp.task('js', function() {
+	return gulp
+   // Find `js` folder
+   .src(jsInput)
 
+   // Run 'jsmin' on the file to minify the outputting JavaScript
+   .pipe(jsmin())
 
+   // Append the suffix '.min' to the file to show that this is the minified version
+   .pipe(rename({suffix: '.min'}))
 
+   // Write the resulting JS in the output destination
+   .pipe(gulp.dest(jsOutput));
+
+});
